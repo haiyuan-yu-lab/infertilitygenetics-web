@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+  background-color: #ffffff;
+  font: 14px sans-serif;
+}
+
+/*table a:link, a:visited { text-decoration: none; }*/
+
+table a:hover, a:active { text-decoration: underline; }
+
+</style>
+<head>
+	<link href="new_style.css" type="text/css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Anton|Josefin+Sans|Montserrat|Quicksand|Wendy+One" rel="stylesheet">
+</head>
+<body>
+	<div class="navigation">
+		<ul>
+			<li class="navigation_catalog activate"><a href="index.html">Home</a></li>
+			<li class="navigation_catalog"><a href="Introduction.html">Introduction</a></li>
+		</ul>
+	</div>
+	<div class="table_title">
+		<h2>The Infertility SNPs</h2>
+	</div>
+	<div>
+		<script src="http://d3js.org/d3.v3.js"></script>
+		<script>
+			// Requirement: rsID should be unique
+			
+			// Selected display columns from the table
+			var column_names = ["Gene Name", "Alleles", "rsID", "AA Change", "Allele Frequency", "Mouse  Phenotype / Status"];
+			
+			// Saved for sorting the table
+			var last_sorted_item = "";
+
+
+			d3.select("body").append("div")
+				.attr("id", "container");
+				
+			
+			d3.select("#container").append("div")
+				.attr("id", "tableContainer");
+			
+			// d3.select("#tableContainer").append("h1")
+			// 	.attr("id", "title")
+			// 	.text("The Infertility SNPs")
+
+			
+			d3.select("#tableContainer").append("div")
+				.attr("class", "SearchBar")
+
+			d3.select(".SearchBar")
+			  .append("input")
+				.attr("class", "SearchBar")
+				.attr("id", "search")
+				.attr("type", "text")
+				.attr("placeholder", "Search SNP by gene name");
+				// .append("img", "magnifyer.png")
+			
+
+			
+			// Create table
+			var table = d3.select("#tableContainer").append("table");
+			table.append("thead").append("tr"); 
+
+			var headers = table.select("tr").selectAll("th")
+				.data(column_names)
+				.enter()
+				.append("th")
+				.text(function(d) { return d; });
+
+			table.append("tbody")
+			
+			
+
+			d3.json("display.json", function(data) {
+				displayTable = function(data, table) {
+					// rows
+					var rows = table.select("tbody").selectAll("tr")
+						.data(data, function(d){ return d["rsID"];}); //, function(d){ return d["rsID"]; }
+					rows.enter()
+						.append("tr")
+					
+					// cells
+					var cells = rows.selectAll("td")
+						.data(row => column_names.map(key => {return {column: key, value: row[key]}}))
+						.enter()
+						.append("td").html(function(d) {
+							if (d.column === 'rsID')
+								return "<a href=https://www.ncbi.nlm.nih.gov/snp/"+ d.value +">" + d.value + "</a>";
+							else 
+								return d.value;
+						});
+					rows.exit().remove();
+				};
+				// Initialize
+				displayTable(data, table);
+				
+				// Search function
+				d3.select("#search")
+					.on("keyup", function() { // filter according to key pressed 
+						var selected_column = "Gene Name";
+						var text = this.value;
+						var regex = new RegExp("^" + text + ".*", "i");
+						var searched_data = data.filter(row => regex.test(row[selected_column]))
+						console.log(searched_data)
+						displayTable(searched_data, table);
+					});
+				
+				// Sorting function
+				headers.on("click", function(d) {
+					var rows = table.select("tbody").selectAll("tr");
+					rows.sort((a,b) => a[d].localeCompare(b[d]));
+					if (d == last_sorted_item) {
+						rows.sort((a,b) => a[d].localeCompare(b[d]) * -1);
+						last_sorted_item = "";
+					}
+					else {
+						rows.sort((a,b) => a[d].localeCompare(b[d]));
+						last_sorted_item = d	
+					}
+				});
+			});	
+		</script>
+	</div>
+</body>

@@ -1,0 +1,272 @@
+body {
+/*   background-color: #FFF;
+  font-family: 'Raleway', sans-serif; */
+  margin: 0;
+  padding: 0;
+}
+
+p{
+  color: #3587A4;
+  text-align: left;
+  font-family: Helvetica;
+  font-size: 18px;
+  line-height: 30px;
+  margin: 0 auto;
+}
+
+h2{
+  color: #3587A4;
+  text-align: center;
+}
+
+.navigation {
+  /*background-color: #85398D;*/
+  /*background: linear-gradient(-45deg, white, #622569);*/
+  background-color: #3587A4;
+}
+
+.navigation ul {
+  position: relative;
+  width: 80%;
+  margin: auto auto;
+  padding: 6px 0;
+}
+
+.navigation li {
+  display: inline-block;
+  margin-right: 40px;
+  letter-spacing: 0.5px;
+  font-weight: 100;
+  font-size: 16px;
+  font-family: 'Wendy One', sans-serif;
+}
+
+li.activate a{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.navigation a{
+  color: white;
+  text-transform: capitalize;
+  text-decoration: none;
+}
+
+.welcome{
+  width: 80%;
+  text-align: center;
+  margin: auto auto;
+  line-height: 40px;
+  font-family: 'Abril Fatface', cursive;
+}
+
+.welcome a{
+  color: #3587A4;
+}
+
+.welcome h2{
+  font-family: 'Abril Fatface', cursive;
+  color: #3587A4;
+}
+
+.main_text{
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+
+.part1{
+  padding: 10px 30px 30px 30px;
+  /*background-color: #622569;
+  border: 1px solid #622569;*/
+
+  background: #88CCF1;
+  /*border-radius: 20px;*/
+}
+
+.part1 p{
+  color: white;
+  font-size: 24px;
+
+}
+
+h2{
+  font-family: 'Wendy One', sans-serif;
+}
+
+p, li{
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.part1 h2{
+  color: white;
+  text-align: center;
+  font-size: 40px;
+  letter-spacing: 1px;
+  text-transform: uppercase
+  font-weight: 500;
+  
+}
+
+.part2{
+  margin: 30px auto;
+  width:80%;
+  /*border: 1px solid #622569;*/
+  /*border-radius: 20px;*/
+  padding: 10px 30px 30px 30px;
+  background-color: #f4f7f8;
+}
+
+.part2 h2{
+  margin-top: 40px;
+  color: #3587A4;
+  text-align: left;
+  font-size: 30px;
+}
+
+.part2 ol{
+  line-height: 30px;
+  font-size: 18px;
+  color: #3587A4;
+}
+
+.part2 li{
+  font-weight: 500;
+}
+
+.part2 img{
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+.conclusion{
+  margin-top: 50px;
+  padding: 10px 30px 30px 30px;
+  border-bottom: 1px solid #3587A4;
+}
+
+.conclusion p{
+  font-size: 24px;
+  color: black;
+}
+
+.foot{
+  width: 80%;
+  margin: 20px auto;
+  padding: 0;
+}
+.foot li {
+  display: inline-block;
+  margin-right: 40px;
+  letter-spacing: 0.5px;
+  font-weight: 100;
+  font-size: 14px;
+  color: #3587A4;
+}
+
+.table_title h2{
+  margin-top: 40px;
+  font-size: 40px;
+  font-family: 'Abril Fatface', cursive;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+#tableContainer {
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  position: absolute;
+  text-align: left;
+}
+
+.SearchBar { 
+  display: block;
+  position: relative;
+  width: 70%;
+  margin: 20px auto;
+  margin-top: 0;
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.SearchBar input {
+  position: relative;
+  border: 1px solid #DDD;
+  width: 70%;
+  height: 50px;
+  /*display: inline;*/
+  padding-left: 14px; 
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+/*.search {
+  height: 16px;
+  background-color: #FFF;
+  border: 1px solid #DDD;
+  border-radius: 3px;
+  color: #AAA;
+  padding: 20px;
+  margin: 50px auto;
+  display: block;
+  width: 77%;
+}
+*/
+table { 
+  margin: 0px auto;
+  width: 90%;
+}
+
+/*th {
+  background-color: #622569;
+  padding: 0 1px 0 1px;
+}*/
+
+
+td, th {
+  text-align: center;
+  height: 50px;
+  margin: 0;
+}
+
+td a{
+  color: black; 
+  text-decoration: underline;
+  font-size: 18px;
+}
+
+th {
+  background-color: #88CCF1;;
+  color: #FFF;
+  font-size: 24px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  padding: 10px;
+  line-height: 30px;
+}
+
+td { 
+  background-color: #f4f7f8;
+  color: black; 
+  font-weight: 200;
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 3px;
+
+}
+
+tr{
+  border: 1px solid #622569;
+}
+
+tr:hover td { background-color: #3587A4; }
